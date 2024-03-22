@@ -43,12 +43,15 @@ g4vg_set_default(CELERITAS_REAL_TYPE double)
 g4vg_set_default(BUILD_SHARED_LIBS OFF)
 g4vg_set_default(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# Load Celeritas
 if(CMAKE_VERSION VERSION_LESS 3.28)
   # See https://gitlab.kitware.com/cmake/cmake/-/issues/20167
-  set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL YES)
+  if(NOT celeritas_POPULATED)
+    FetchContent_Populate(Celeritas)
+    add_subdirectory(${celeritas_SOURCE_DIR} ${celeritas_BINARY_DIR} EXCLUDE_FROM_ALL)
+  endif()
+else()
+  FetchContent_MakeAvailable(Celeritas)
 endif()
-
-# Load Celeritas
-FetchContent_MakeAvailable(Celeritas)
 
 #-----------------------------------------------------------------------------#
