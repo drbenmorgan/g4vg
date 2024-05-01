@@ -5,7 +5,7 @@
 #----------------------------------------------------------------------------#
 
 cmake_minimum_required(VERSION 3.14...3.28)
-project(G4VG VERSION 0.1.0 LANGUAGES CXX CUDA)
+project(G4VG VERSION 0.1.0 LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
@@ -29,7 +29,13 @@ g4vg_set_default(BUILD_TESTING ${G4VG_BUILD_TESTS})
 
 g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(CUDAToolkit)
+#----------------------------------------------------------------------------#
+# Find VecGeom to determine if we need a CUDA build or not
+
+find_package(VecGeom REQUIRED)
+if(VecGeom_FOUND AND TARGET VecGeom::vecgeomcuda)
+  enable_language(CUDA)
+endif()
 
 #----------------------------------------------------------------------------#
 # Add code

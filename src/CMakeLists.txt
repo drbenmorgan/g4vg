@@ -6,9 +6,13 @@
 
 #-----------------------------------------------------------------------------#
 # Add the library
+set(_g4vg_SOURCES G4VG.cc)
+if(TARGET VecGeom::vecgeomcuda)
+  list(APPEND _g4vg_SOURCES dummy.cu)
+endif()
+
 cuda_rdc_add_library(g4vg SHARED
-  G4VG.cc
-  dummy.cu
+  ${_g4vg_SOURCES}
 )
 cuda_rdc_target_link_libraries(g4vg
   PRIVATE Celeritas::geocel
