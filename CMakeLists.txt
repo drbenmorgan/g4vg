@@ -5,7 +5,7 @@
 #----------------------------------------------------------------------------#
 
 cmake_minimum_required(VERSION 3.14...3.28)
-project(G4VG VERSION 0.1.0 LANGUAGES CXX)
+project(G4VG VERSION 0.1.0 LANGUAGES CXX CUDA)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
@@ -28,6 +28,8 @@ option(G4VG_BUILD_TESTS "Build G4VG unit tests" OFF)
 g4vg_set_default(BUILD_TESTING ${G4VG_BUILD_TESTS})
 
 g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
+
+find_package(CUDAToolkit)
 
 #----------------------------------------------------------------------------#
 # Add code
@@ -64,7 +66,7 @@ set(G4VG_INSTALL_CMAKECONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/G4VG")
 
 # Install 'G4VGTargets.cmake', included by G4VGConfig.cmake, which
 # references the targets we install.
-install(EXPORT g4vg-targets
+cuda_rdc_install(EXPORT g4vg-targets
   FILE G4VGTargets.cmake
   NAMESPACE G4VG::
   DESTINATION "${G4VG_INSTALL_CMAKECONFIGDIR}"

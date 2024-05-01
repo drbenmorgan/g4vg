@@ -8,6 +8,7 @@
 # Add the library
 cuda_rdc_add_library(g4vg SHARED
   G4VG.cc
+  dummy.cu
 )
 cuda_rdc_target_link_libraries(g4vg
   PRIVATE Celeritas::geocel
@@ -19,10 +20,10 @@ cuda_rdc_target_include_directories(g4vg
 )
 
 # Alias the library for downstream code
-add_library(G4VG::g4vg ALIAS g4vg)
+cuda_rdc_add_library(G4VG::g4vg ALIAS g4vg)
 
 # Install all targets to lib/
-install(TARGETS g4vg
+cuda_rdc_install(TARGETS g4vg
   EXPORT g4vg-targets
   ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
