@@ -8,16 +8,16 @@
 # Add the library
 cuda_rdc_add_library(g4vg SHARED
   G4VG.cc
+  detail/Converter.cc
+  detail/LogicalVolumeConverter.cc
+  detail/SolidConverter.cc
 )
 # Whilst geocel contains the primary Geant4/VecGeom dependency, we must also 
 # declare the geometry/gdml deps explicitly so that clients can pick them
 # up correctly through LINK_DEPENDENT_LIBRARIES should the linker require it.
 # See: https://discourse.cmake.org/t/use-cases-for-imported-link-dependent-libraries
 cuda_rdc_target_link_libraries(g4vg
-  PRIVATE 
-    Celeritas::geocel 
-    Geant4::G4geometry
-    $<IF:$<TARGET_EXISTS:Geant4::G4gdml>,Geant4::G4gdml,Geant4::G4persistency>
+  PRIVATE VecGeom::vecgeom
 )
 cuda_rdc_target_include_directories(g4vg
   PUBLIC

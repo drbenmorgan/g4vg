@@ -12,6 +12,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 #----------------------------------------------------------------------------#
 # Utilities
 
+include(CudaRdcUtils)
 include(GNUInstallDirs)
 
 macro(g4vg_set_default name value)
@@ -31,18 +32,11 @@ g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
 
 #----------------------------------------------------------------------------#
 # Dependencies
-# Found here because we need the targets visible to both import Celeritas and
-# to declare them as-needed in g4vg itself for correct downstream use
-
-find_package(Geant4 REQUIRED)
-find_package(VecGeom REQUIRED)
-
-# Celeritas *might* be coming from a superproject...
-if(NOT Celeritas_FOUND)
-  find_package(Celeritas QUIET)
-  if(NOT Celeritas_FOUND)
-    add_subdirectory(external)
-  endif()
+if(NOT VecGeom_FOUND)
+  find_package(VecGeom REQUIRED)
+endif()
+if(NOT Geant4_FOUND)
+  find_package(Geant4 REQUIRED)
 endif()
 
 #----------------------------------------------------------------------------#
