@@ -11,6 +11,7 @@
 
 //#include "corecel/Types.hh"
 //#include "corecel/cont/Array.hh"
+#include "TranslationTypes.hh"
 
 class G4VSolid;
 class G4BooleanSolid;

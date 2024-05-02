@@ -78,7 +78,8 @@ auto LogicalVolumeConverter::construct_base(arg_type g4lv) -> result_type
     {
         shape = convert_solid_(*g4lv.GetSolid());
     }
-    catch (celeritas::RuntimeError const& e)
+    //catch (celeritas::RuntimeError const& e)
+    catch (g4vg::RuntimeError const& e)
     {
         CELER_LOG(error) << "Failed to convert solid type '"
                          << g4lv.GetSolid()->GetEntityType() << "' named '"

@@ -13,6 +13,7 @@
 
 //#include "celeritas_config.h"
 //#include "geocel/Types.hh"
+#include "TranslationTypes.hh"
 
 //---------------------------------------------------------------------------//
 // Forward declarations
