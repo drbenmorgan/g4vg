@@ -78,7 +78,8 @@ template<typename T, size_type N>
 using Array = std::array<T, N>;
 
 // Celeritas' range is basically a count from zero to the input arg
-// This is a filthy hack around that just to get things working
+// This is a filthy hack around that just to get things working for the use cases
+// present in G4VG
 template<typename N>
 auto range(N const& i) -> std::vector<N>
 {
