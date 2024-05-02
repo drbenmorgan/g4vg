@@ -13,14 +13,12 @@
 #include <VecGeom/volumes/LogicalVolume.h>
 #include <VecGeom/volumes/UnplacedVolume.h>
 
-#include "corecel/Assert.hh"
-#include "corecel/io/Logger.hh"
-#include "geocel/GeantGeoUtils.hh"
+//#include "corecel/Assert.hh"
+//#include "corecel/io/Logger.hh"
+//#include "geocel/GeantGeoUtils.hh"
 
 #include "SolidConverter.hh"
 
-namespace celeritas
-{
 namespace g4vg
 {
 //---------------------------------------------------------------------------//
@@ -106,4 +104,3 @@ auto LogicalVolumeConverter::construct_base(arg_type g4lv) -> result_type
 
 //---------------------------------------------------------------------------//
 }  // namespace g4vg
-}  // namespace celeritas

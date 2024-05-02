@@ -9,8 +9,8 @@
 
 #include <unordered_map>
 
-#include "corecel/Types.hh"
-#include "corecel/cont/Array.hh"
+//#include "corecel/Types.hh"
+//#include "corecel/cont/Array.hh"
 
 class G4VSolid;
 class G4BooleanSolid;
@@ -24,8 +24,6 @@ class VUnplacedVolume;
 }  // namespace cxx
 }  // namespace vecgeom
 
-namespace celeritas
-{
 namespace g4vg
 {
 //---------------------------------------------------------------------------//
@@ -124,4 +122,3 @@ SolidConverter::SolidConverter(Scaler const& convert_scale,
 
 //---------------------------------------------------------------------------//
 }  // namespace g4vg
-}  // namespace celeritas

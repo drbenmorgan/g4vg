@@ -11,10 +11,8 @@
 #include <G4ThreeVector.hh>
 #include <G4TwoVector.hh>
 
-#include "geocel/detail/LengthUnits.hh"
+//#include "geocel/detail/LengthUnits.hh"
 
-namespace celeritas
-{
 namespace g4vg
 {
 //---------------------------------------------------------------------------//
@@ -48,4 +46,3 @@ class Scaler
 
 //---------------------------------------------------------------------------//
 }  // namespace g4vg
-}  // namespace celeritas
