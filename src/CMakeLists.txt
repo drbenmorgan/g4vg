@@ -8,9 +8,12 @@
 # Add the library
 cuda_rdc_add_library(g4vg SHARED
   G4VG.cc
+  detail/Converter.cc
+  detail/LogicalVolumeConverter.cc
+  detail/SolidConverter.cc
 )
 cuda_rdc_target_link_libraries(g4vg
-  PRIVATE Celeritas::geocel
+  PRIVATE VecGeom::vecgeom
 )
 cuda_rdc_target_include_directories(g4vg
   PUBLIC
