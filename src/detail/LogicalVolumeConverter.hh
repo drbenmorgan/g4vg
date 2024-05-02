@@ -10,6 +10,7 @@
 #include <unordered_map>
 
 //#include "geocel/Types.hh"
+#include "TranslationTypes.hh"
 
 //---------------------------------------------------------------------------//
 // Forward declarations

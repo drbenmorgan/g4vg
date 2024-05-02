@@ -35,8 +35,8 @@ g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
 if(NOT VecGeom_FOUND)
   find_package(VecGeom REQUIRED)
 endif()
-if(NOT Geant4_FOUND)
-  find_package(Geant4 REQUIRED)
+if(NOT Geant4_FOUND AND NOT Geant4_gdml_FOUND)
+  find_package(Geant4 REQUIRED gdml)
 endif()
 
 #----------------------------------------------------------------------------#

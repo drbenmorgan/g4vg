@@ -41,7 +41,9 @@ class Scaler
     }
 
   private:
-    inline static constexpr double scale_ = celeritas::lengthunits::millimeter;
+    //inline static constexpr double scale_ = celeritas::lengthunits::millimeter;
+    // We are probably _always_ in "CLHEP" units...
+    inline static constexpr double scale_ = 1.;
 };
 
 //---------------------------------------------------------------------------//

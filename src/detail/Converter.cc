@@ -168,9 +168,9 @@ auto Converter::operator()(arg_type g4world) -> result_type
     CELER_EXPECT(g4world->GetTranslation() == G4ThreeVector(0, 0, 0));
 
     CELER_LOG(status) << "Converting Geant4 geometry";
-    ScopedProfiling profile_this{"import-geant-geo"};
-    ScopedMem record_mem("Converter.convert");
-    ScopedTimeLog scoped_time;
+    //ScopedProfiling profile_this{"import-geant-geo"};
+    //ScopedMem record_mem("Converter.convert");
+    //ScopedTimeLog scoped_time;
 
     // Recurse through physical volumes once to build underlying LV
     std::unordered_set<G4LogicalVolume const*> all_g4lv;
