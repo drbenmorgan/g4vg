@@ -32,12 +32,15 @@ g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
 
 #----------------------------------------------------------------------------#
 # Dependencies
-if(NOT VecGeom_FOUND)
-  find_package(VecGeom REQUIRED)
+
+find_package(VecGeom REQUIRED)
+# Need to enable CUDA even though we don't use it to link to VecGeom correctly
+# when that has CUDA enabled.
+if(TARGET VecGeom::vecgeomcuda)
+  enable_language(CUDA)
 endif()
-if(NOT Geant4_FOUND AND NOT Geant4_gdml_FOUND)
-  find_package(Geant4 REQUIRED gdml)
-endif()
+
+find_package(Geant4 REQUIRED gdml)
 
 #----------------------------------------------------------------------------#
 # Add code

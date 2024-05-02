@@ -82,7 +82,7 @@ using Array = std::array<T, N>;
 template<typename N>
 auto range(N const& i) -> std::vector<N>
 {
-    std::vector<N> r{i, 0};
+    std::vector<N> r(i, 0);
     N counter{0};
     for (auto& v : r)
     {

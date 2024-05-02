@@ -22,7 +22,7 @@ cuda_rdc_target_include_directories(g4vg
 )
 
 # Alias the library for downstream code
-add_library(G4VG::g4vg ALIAS g4vg)
+cuda_rdc_add_library(G4VG::g4vg ALIAS g4vg)
 
 # Install all targets to lib/
 install(TARGETS g4vg
