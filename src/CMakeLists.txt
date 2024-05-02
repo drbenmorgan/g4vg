@@ -13,7 +13,7 @@ cuda_rdc_add_library(g4vg SHARED
   detail/SolidConverter.cc
 )
 cuda_rdc_target_link_libraries(g4vg
-  PRIVATE VecGeom::vecgeom
+  PRIVATE VecGeom::vecgeom Geant4::G4geometry
 )
 cuda_rdc_target_include_directories(g4vg
   PUBLIC

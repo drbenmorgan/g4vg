@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------//
 #include "G4VG.hh"
 
-#include <geocel/g4vg/Converter.hh>
+#include "detail/Converter.hh"
 
 namespace g4vg
 {
@@ -29,8 +29,6 @@ Converted convert(G4VPhysicalVolume const* world)
  */
 Converted convert(G4VPhysicalVolume const* world, Options options)
 {
-    using Converter = ::celeritas::g4vg::Converter;
-
     // Construct converter
     Converter convert{[&options] {
         Converter::Options geocel_opts;

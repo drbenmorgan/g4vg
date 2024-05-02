@@ -11,8 +11,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "celeritas_config.h"
-#include "geocel/Types.hh"
+//#include "celeritas_config.h"
+//#include "geocel/Types.hh"
 
 //---------------------------------------------------------------------------//
 // Forward declarations
@@ -31,8 +31,6 @@ class VPlacedVolume;
 }  // namespace vecgeom
 //---------------------------------------------------------------------------//
 
-namespace celeritas
-{
 namespace g4vg
 {
 //---------------------------------------------------------------------------//
@@ -85,7 +83,6 @@ class Converter
   private:
     using VGLogicalVolume = vecgeom::LogicalVolume;
 
-#if CELERITAS_USE_GEANT4
     Options options_;
     int depth_{0};
 
@@ -96,19 +93,7 @@ class Converter
     std::unordered_set<VGLogicalVolume const*> built_daughters_;
 
     VGLogicalVolume* build_with_daughters(G4LogicalVolume const* mother_g4lv);
-#endif
 };
-
-#if !CELERITAS_USE_GEANT4
-inline Converter::Converter(Options) {}
-inline Converter::~Converter() = default;
-
-inline auto Converter::operator()(arg_type) -> result_type
-{
-    CELER_NOT_CONFIGURED("Geant4");
-}
-#endif
 
 //---------------------------------------------------------------------------//
 }  // namespace g4vg
-}  // namespace celeritas
