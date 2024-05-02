@@ -62,6 +62,26 @@ endif()
 
 set(G4VG_INSTALL_CMAKECONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/G4VG")
 
+# Install 'G4VGConfig.cmake'
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/G4VGConfigVersion.cmake"
+  COMPATIBILITY AnyNewerVersion
+)
+configure_package_config_file(
+  "cmake/G4VGConfig.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/G4VGConfig.cmake"
+  INSTALL_DESTINATION "${G4VG_INSTALL_CMAKECONFIGDIR}"
+  NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/G4VGConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/G4VGConfig.cmake"
+  DESTINATION "${G4VG_INSTALL_CMAKECONFIGDIR}"
+  COMPONENT development
+)
+
 # Install 'G4VGTargets.cmake', included by G4VGConfig.cmake, which
 # references the targets we install.
 install(EXPORT g4vg-targets
