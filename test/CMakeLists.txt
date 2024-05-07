@@ -4,6 +4,12 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 #-----------------------------------------------------------------------------#
 
+# - Raw link test
+add_executable(g4vg_link_test G4VG.link.test.cc)
+target_link_libraries(g4vg_link_test PRIVATE G4VG::g4vg)
+return()
+
+# - Primary code test
 file(TO_CMAKE_PATH "${PROJECT_SOURCE_DIR}" G4VG_SOURCE_DIR)
 configure_file(g4vg_test_config.h.in g4vg_test_config.h @ONLY)
 

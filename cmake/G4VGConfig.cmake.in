@@ -1,4 +1,9 @@
 @PACKAGE_INIT@
 
+# Refind dependencies in case linker needs paths to resolve
+include(CMakeFindDependencyMacro)
+find_dependency(Geant4)
+find_depencency(VecGeom)
+
 include("${CMAKE_CURRENT_LIST_DIR}/G4VGTargets.cmake")
 

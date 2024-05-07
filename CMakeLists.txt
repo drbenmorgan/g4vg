@@ -30,6 +30,14 @@ g4vg_set_default(BUILD_TESTING ${G4VG_BUILD_TESTS})
 g4vg_set_default(CMAKE_CXX_EXTENSIONS OFF)
 
 #----------------------------------------------------------------------------#
+# Dependencies
+# Found here because we need the targets visible to both import Celeritas and
+# to declare them as-needed in g4vg itself for correct downstream use
+
+find_package(Geant4 REQUIRED)
+find_package(VecGeom REQUIRED)
+
+#----------------------------------------------------------------------------#
 # Add code
 
 add_subdirectory(external)
@@ -45,15 +53,6 @@ if(G4VG_BUILD_TESTS)
   if(NOT GTest_FOUND)
     find_package(GTest 1.10 REQUIRED)
   endif()
-  if(NOT VecGeom_FOUND)
-    # Note: using the same version as celeritas to silence cmake config
-    # messages
-    find_package(VecGeom 1.2.4 REQUIRED)
-  endif()
-  if(NOT Geant4_FOUND)
-    find_package(Geant4 REQUIRED)
-  endif()
-
   add_subdirectory(test)
 endif()
 
