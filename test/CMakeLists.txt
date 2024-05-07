@@ -7,7 +7,6 @@
 # - Raw link test
 add_executable(g4vg_link_test G4VG.link.test.cc)
 target_link_libraries(g4vg_link_test PRIVATE G4VG::g4vg)
-return()
 
 # - Primary code test
 file(TO_CMAKE_PATH "${PROJECT_SOURCE_DIR}" G4VG_SOURCE_DIR)
