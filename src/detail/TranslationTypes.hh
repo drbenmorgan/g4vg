@@ -16,7 +16,6 @@
 #include <G4LogicalVolume.hh>
 #include <G4ReflectionFactory.hh>
 #include <VecGeom/base/Global.h>
-#include <VecGeom/management/Logger.h>
 
 #ifdef __GNUG__
 #    include <cstdlib>
@@ -57,7 +56,12 @@
     } while (0)
 
 // Celeritas log interface is same as Vecgeom
+#if __has_include(<VecGeom/management/Logger.h>)
+#include <VecGeom/management/Logger.h>
 #define CELER_LOG(STATUS) VECGEOM_LOG(STATUS)
+#else
+#define CELER_LOG(STATUS) std::cout
+#endif
 
 namespace g4vg
 {

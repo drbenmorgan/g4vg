@@ -17,8 +17,14 @@ cuda_rdc_add_library(g4vg SHARED
 # up correctly through LINK_DEPENDENT_LIBRARIES should the linker require it.
 # See: https://discourse.cmake.org/t/use-cases-for-imported-link-dependent-libraries
 cuda_rdc_target_link_libraries(g4vg
-  PRIVATE VecGeom::vecgeom Geant4::G4geometry Geant4::G4persistency
+  PRIVATE VecGeom::vecgeom Geant4::G4geometry 
 )
+if(TARGET Geant4::G4gdml)
+  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4gdml)
+else()
+  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4persistency)
+endif()
+
 cuda_rdc_target_include_directories(g4vg
   PUBLIC
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>"
