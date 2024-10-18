@@ -6,7 +6,7 @@
 
 #-----------------------------------------------------------------------------#
 # Add the library
-cuda_rdc_add_library(g4vg SHARED
+cuda_rdc_add_library(g4vg STATIC
   G4VG.cc
   detail/Converter.cc
   detail/LogicalVolumeConverter.cc
@@ -17,12 +17,12 @@ cuda_rdc_add_library(g4vg SHARED
 # up correctly through LINK_DEPENDENT_LIBRARIES should the linker require it.
 # See: https://discourse.cmake.org/t/use-cases-for-imported-link-dependent-libraries
 cuda_rdc_target_link_libraries(g4vg
-  PRIVATE VecGeom::vecgeom Geant4::G4geometry 
+  PRIVATE VecGeom::vecgeom Geant4::G4geometry-static 
 )
-if(TARGET Geant4::G4gdml)
-  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4gdml)
+if(TARGET Geant4::G4gdml-static)
+  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4gdml-static)
 else()
-  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4persistency)
+  cuda_rdc_target_link_libraries(g4vg PRIVATE Geant4::G4persistency-static)
 endif()
 
 cuda_rdc_target_include_directories(g4vg
